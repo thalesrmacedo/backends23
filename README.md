@@ -1,6 +1,6 @@
 *Backend S23*
 
-1 - Fazer download dos arquivos
+1 - Fazer download dos arquivos  
 2 - No VSCode, ir no terminal e executar os comandos:
 
 npm init -y  
