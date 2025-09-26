@@ -14,7 +14,7 @@ Crie uma requisição POST para: http://localhost:3000/api/transferencia
 Vá em Body → raw → JSON e cole:  
 
 {  
-  "cliente:" NOMEDOALUNO  
+  "cliente:" NOMEDOALUNO,  
   "valor": 100,  
   "destino": "Conta 1234-5"  
 }
