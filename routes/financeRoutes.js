@@ -12,10 +12,10 @@ router.get('/saldo', (req, res) => {
 
 // Rota: Realizar transferência
 router.post('/transferencia', (req, res) => {
-  const { valor, destino } = req.body;
+  const { cliente, valor, destino } = req.body;
 
-  if (!valor || !destino) {
-    return res.status(400).json({ erro: 'Informe valor e destino' });
+  if (!cliente || !valor || !destino) {
+    return res.status(400).json({ erro: 'Informe cliente, valor e destino' });
   }
 
   if (valor > saldo) {
@@ -23,9 +23,18 @@ router.post('/transferencia', (req, res) => {
   }
 
   saldo -= valor;
-  historico.push({ tipo: 'Transferência', valor, destino, data: new Date() });
+  historico.push({
+    cliente,
+    tipo: 'Transferência',
+    valor,
+    destino,
+    data: new Date()
+  });
 
-  res.json({ mensagem: `Transferência de R$${valor} para ${destino} realizada com sucesso.`, saldoAtual: saldo });
+  res.json({
+    mensagem: `Transferência de R$${valor} para ${destino} realizada por ${cliente} com sucesso.`,
+    saldoAtual: saldo
+  });
 });
 
 // Rota: Histórico de transações
